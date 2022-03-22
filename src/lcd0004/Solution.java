@@ -1,6 +1,7 @@
 package lcd0004;
 
 class Solution {
+    // O(m+n)
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 
         int m = nums1.length;
@@ -69,7 +70,40 @@ class Solution {
         }
     }
 
+    // O(log(m+n))
+    public double findMedianSortedArrays1(int[] nums1, int[] nums2) {
+
+        if ((nums1 == null || nums1.length == 0) && (nums2 == null || nums2.length == 0)) {
+            return 0;
+        }
+        if (nums1 == null || nums1.length == 0) {
+
+            return (nums2[nums2.length / 2] + nums2[(nums2.length - 1) / 2]) / 2.0;
+        }
+        if (nums2 == null || nums2.length == 0) {
+            return (nums1[nums1.length / 2] + nums1[(nums1.length - 1) / 2]) / 2.0;
+        }
+        int m = nums1.length;
+        int n = nums2.length;
+        int i = 0, endi = m - 1;
+        int j = 0, endj = n - 1;
+        while (i + j < (m + n) / 2) {
+            if (nums1[i] < nums2[j]) {
+
+            }
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
-        System.out.println(new Solution().findMedianSortedArrays(new int[]{1,1,3}, new int[]{}));
+        System.out.println(new Solution().findMedianSortedArrays(new int[]{1, 1, 3}, new int[]{}));
+        System.out.println(new Solution().findMedianSortedArrays(new int[]{1}, new int[]{}));
+        System.out.println(new Solution().findMedianSortedArrays(new int[]{1, 2, 5}, new int[]{3, 4, 6}));
+        System.out.println(new Solution().findMedianSortedArrays(new int[]{1, 2, 5}, new int[]{3, 4, 6, 7}));
+        System.out.println(new Solution().findMedianSortedArrays1(new int[]{1, 1, 3}, new int[]{}));
+        System.out.println(new Solution().findMedianSortedArrays1(new int[]{1}, new int[]{}));
+        System.out.println(new Solution().findMedianSortedArrays1(new int[]{1, 2, 5}, new int[]{3, 4, 6}));
+        System.out.println(new Solution().findMedianSortedArrays1(new int[]{1, 2, 5}, new int[]{3, 4, 6, 7}));
+
     }
 }
