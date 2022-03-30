@@ -21,23 +21,26 @@ public class Solution {
     public String convert(String s, int numRows) {
         if (numRows == 1) return s;
         if (s == null || s.length() == 0) return "";
-        String res = "";
+        int charsi = 0;
+        //String res = "";
+        char[] chars = new char[s.length()];
         for (int i = 0; i < numRows; i++) {
             int k = 0;
             for (int j = i; j < s.length(); k++, j = i + (2 * numRows - 2) * k) {
-                res += s.charAt(j);
+                //res += s.charAt(j);
+                chars[charsi++] = s.charAt(j);
                 if (i != 0 && i != numRows - 1) {
-                    System.out.println("j: "+j);
-                    int idx = (2 * numRows - 2) +j-1-i;
-                    System.out.println("idx: "+idx);
+                    int idx = (2 * numRows - 2) + j - i * 2;
                     if (idx >= s.length()) continue;
-                    res += s.charAt(idx);
+                    //res += s.charAt(idx);
+                    chars[charsi++] = s.charAt(idx);
                 }
             }
 
 
         }
-        return res;
+        //return res;
+        return new String(chars);
     }
 
     public static void main(String[] args) {
